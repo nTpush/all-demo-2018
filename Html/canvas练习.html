@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		body {
+			background: #141E30;  /* fallback for old browsers */
+			background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+		}
+	</style>
+</head>
+
+<body>
+	<canvas id="canvas"></canvas>
+</body>
+</html>
+<script type="text/javascript">
+	var canvas = document.getElementById('canvas')
+		, WIDTH = canvas.width = document.documentElement.clientWidth
+		, HEIGHT = canvas.height = document.documentElement.clientHeight
+		, content = canvas.getContext('2d')
+		, round = []
+		, initRoundPopulation  = 80; 
+
+	function Round_item(index, x, y) {
+		this.index = index
+		this.x = x 
+		this.y = y
+		this.r = Math.random() * 2 + 1
+
+		var alpha = (Math.floor(Math.random() * 10) + 1) / 10 / 2;
+		this.color = 'rgba(155,255,255,' + alpha + ')';
+	}
+
+	Round_item.prototype.draw = function() {
+		content.fillStyle = this.color
+		content.shadowBlur = this.r * 2
+		content.beginPath()
+		content.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false)
+		content.closePath()
+		content.fill()
+	}
+
+	Round_item.prototype.move = function(i) {
+		this.y -= i
+		if(this.y <= -10) {
+			this.y = HEIGHT + 10
+		}
+		this.draw()
+	}
+
+	function animate() {
+		content.clearRect(0, 0, WIDTH, HEIGHT)
+		for(var i in round) {
+			round[i].move(i/10)
+		}
+		requestAnimationFrame(animate)
+	}
+
+	function init() {
+		for(var i = 0; i< initRoundPopulation; i++) {
+			round[i] = new Round_item(i, Math.random() * WIDTH, Math.random() * HEIGHT)
+			round[i].draw();
+		}
+
+		animate()
+	}
+
+	init()
+</script>

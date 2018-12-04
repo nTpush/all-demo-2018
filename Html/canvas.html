@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>canvas</title>
+</head>
+<style type="text/css">
+	#canvas {
+		background: #000;
+	}
+	body {
+		 background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
+	}
+</style>
+<body>
+	<canvas id="canvas"></canvas>
+</body>
+</html>
+<script type="text/javascript">
+
+	var url = 'http://192.168.1.213:8888/#/?appid=999999&token=2e496f88-beef-4b2c-b446-bdf5961eb607'
+
+	// var reg = /^((appid).*)&$/;
+	var reg = /(appid)=.*&/;
+
+	console.log(url.match(reg)[0])
+
+function parseQueryString(url){
+    var obj = {};
+    var start = url.indexOf("?")+1;
+    var str = url.substr(start);
+    var arr = str.split("&");
+    for(var i = 0 ;i < arr.length;i++){
+          var arr2 = arr[i].split("=");
+           obj[arr2[0]] = arr2[1];
+    }
+return obj;
+}
+
+
+console.log(parseQueryString(url))
+
+
+
+	 var canvas = document.getElementById('canvas')
+	 var context = canvas.getContext('2d')
+	 canvas.width = 400
+	 canvas.height = 400
+
+	// context.beginPath()
+	// context.arc(100, 100, 1, 0, Math.PI * 2, true)
+	// context.closePath()
+
+	// context.fillStyle = 'rgba(255,255,255)'
+	// context.fill()
+
+
+	// context.beginPath()
+	// context.arc(100, 100, 50, 0, Math.PI * 0.5, false)
+	// context.strokeStyle='white'
+
+	// context.closePath()
+	// context.stroke()
+
+	// context.beginPath()
+	// context.lineTo(200, 200)
+	// context.lineTo(200, 100)
+	// context.lineTo(100, 50)
+	// context.lineCap = 'round'
+	// context.lineWidth = 10
+	// context.strokeStyle = '#fff'
+	// context.stroke()
+
+	// context.beginPath()
+
+	// var grd = context.createLinearGradient(0,0,0,100);
+ //    grd.addColorStop(0,'rgb(255, 0, 0)');
+
+ //    grd.addColorStop(1,'rgb(139, 0, 255)');
+
+
+
+	// context.fillStyle = grd
+	// context.shadowBlur = 20
+	// context.shadowColor = '#fff'
+	// context.fillRect(10, 10, 100, 100)
+	// context.strokeStyle = '#fff'
+	// context.strokeRect(130, 10, 100, 100)
+
+	// 缩放
+	context.strokeStyle = 'white'
+	context.strokeRect(5,5,50,25)
+	context.scale(2, 2)
+	context.strokeRect(5,5,50,25)
+	context.scale(2, 2)
+    context.rotate(20*Math.PI/180);
+	context.strokeRect(5,5,50,25)
+</script>

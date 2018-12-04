@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript 闭包与高阶函数 ( 一 )</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+	// var cache = [1, 1]
+
+	// var calc = function() {
+	// 	return cache[n]!= undefined ?
+	// 		cache[n]:
+	// 		cache[n] = calc(n-1) + calc(n-2)
+	// }
+
+	// var calc = function() {
+	// 	return calc.cache[n] != undefined ?
+	// 		calc.cache[n] :
+	// 		calc.cache[n] = calc.cache(n-1) + calc.cache(n-2)
+	// }
+	// calc.cache = [1,1]
+
+
+	// var Fibonacci = (function() {
+	// 	var cache = [1, 1]
+
+	// 	return {
+	// 		calc: function(n) {
+	// 			return cache[n] != undefined ?
+	// 				cache[n] :
+	// 				cache[n] = this.calc(n - 1) + this.calc(n - 2)
+	// 		}
+	// 	}
+	// })()
+
+	// Fibonacci.calc(5)
+
+	// var report = (function(){ 
+	//     var imgs = []; 
+	//     return function( src ){ 
+	//         var img = new Image(); 
+	//         imgs.push( img ); 
+	//         img.src = src; 
+	//     } 
+	// })(); 
+
+	// report("timg.jpg")
+
+// var Type = {};
+// for (var i = 0, type; type = ['String', 'Number', 'Boolean', 'Object'][i++];) {
+//     (function(type) {
+//         Type["is" + type] = function(o) {
+//             return Object.prototype.toString.call(o) === '[object ' + type + ']';
+//         }
+//     })(type);
+// }
+
+// console.log(Type.isString("hh"));
+
+	// Function.prototype.before = function(beforeFn) {
+	// 	var self = this;
+	// 	return function() {
+	// 		beforeFn.apply(this, Array.prototype.slice.call(arguments))
+	// 		return self.apply(this, Array.prototype.slice.call(arguments))
+	// 	}
+	// }
+
+	// Function.prototype.after = function(afterFn) {
+	// 	var self = this;
+	// 	return function() {
+	// 		var ret;
+	// 		ret = self.apply(this, Array.prototype.slice.call(arguments))
+	// 		afterFn.apply(this, Array.prototype.slice.call(arguments))
+	// 		return ret;
+	// 	}
+	// }
+
+	// var func = function() {
+	// 	console.log(2)
+	// }
+
+	// func = func.before(function() {
+	// 	console.log(1)
+	// }).after(function() {
+	// 	console.log(3)
+	// })
+
+	// func()
+
+	// var curry = (function() {
+	// 	var data = [1]
+	// 	var func = function(n) {
+	// 		data.push(n)
+	// 		return func
+	// 	}
+
+	// 	func.valueOf = function() {
+	// 		var ret = data.reduce(function(a, b) {
+	// 			return a * b
+	// 		})
+	// 		data = [1]
+	// 		return ret
+	// 	}
+	// 	return func;
+	// })()
+
+
+	// console.log(curry(1))
+	// console.log(curry(1)(2))
+	// console.log(curry(1)(2)(3))
+
+	// var curry = function(fn) {
+	// 	var args = [];
+	// 	var ret = function(n) {
+	// 		args.push(n)
+	// 		return ret;
+	// 	}
+
+	// 	ret.valueOf = function() {
+	// 		var ret = args.reduce(fn)
+	// 		args = []
+	// 		return ret
+	// 	}
+	// 	return ret
+	// }
+
+	// var func = curry(function(a, b) {
+	// 	return a * b
+	// })
+
+	// console.log(func(1))
+	// console.log(func(1)(2))
+	// console.log(func(1)(2)(3))
+
+
+	// var push = Array.prototype.push
+	// var a = []
+	// push.call(a, 1)
+	// console.log(a)
+
+	// Function.prototype.uncharrying = function() {
+	// 	var self = this
+
+	// 	return function() {
+	// 		console.log(arguments,'0')
+	// 		var _this = Array.prototype.shift.call(arguments)
+	// 		console.log(_this, 1)
+	// 		return self.apply(_this, arguments)
+	// 	}
+	// }
+
+	// var push = Array.prototype.push.uncharrying()
+	// var a = []
+	// push(a, 1, 2)
+	// console.log(a)
+
+	// var flag = false
+	// window.onresize = function(e) {
+	// 	if(flag) {
+	// 		return
+	// 	}
+	// 	setTimeout(function() {
+	// 		console.log(2)
+	// 		flag = false
+	// 	}, 1000)
+	// 	flag = true
+	// }
+
+	// window.onresize = (function(e) {
+	// 	var flag = false
+	// 	return function() {
+	// 		if(flag) {
+	// 			return
+	// 		}
+	// 		setTimeout(function() {
+	// 			console.log(2)
+	// 			flag = false
+	// 		}, 1000)
+	// 		flag = true
+	// 	}
+	// })()
+
+	// var throttle = function(fn, interval) {
+	// 	var __self = fn,
+	// 		timer,
+	// 		firstTime = true;
+
+	// 	return function() {
+	// 		var args = arguments,
+	// 			__me = this;
+
+	// 		if(firstTime) {
+	// 			__self.apply(__me, args);
+	// 			return firstTime = false
+	// 		}
+
+	// 		if(timer) {
+	// 			return false
+	// 		}
+
+	// 		timer = setTimeout(function() {
+	// 			clearTimeout(timer)
+	// 			timer = null
+	// 			__self.apply(__me, args)
+	// 		}, interval || 500)
+	// 	}
+	// }
+
+	// window.onresize = throttle(function() {
+	// 	console.log(2)
+	// }, 500)
+
+
+
+	var timeChunk = function(argsAry, fn, count) {
+		var interval;
+		var exec = function() {
+			var l = argsAry.length
+			for(var i = 0; i< Math.min(count || 1, l); i++) {
+				var arg = argsAry.shift();
+				fn(arg)
+			}
+		}
+
+		return function() {
+			interval = setInterval(function() {
+				var flag = exec()
+				if(argsAry.length === 0) {
+					clearInterval(interval)
+					interval = null
+				}
+			}, 1000)
+		}
+	}
+
+	var a = [], func;
+
+	for(var i = 0; i< 36; i++) {
+		a.push(i)
+	}
+
+	func = timeChunk(a, function(i) {
+		console.log(i)
+	}, 10)
+	func()
+</script>

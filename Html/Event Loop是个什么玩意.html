@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	https://juejin.im/post/5b067e66f265da0de45237cd
+	<div id="main">
+		<ul class="list">
+			<li class="item" v-for="item in list">{{ item }}</li>
+		</ul>
+	</div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+<script type="text/javascript">
+
+	console.log(1)
+
+	setTimeout(function() {
+		console.log(2)
+	})
+
+	Promise.resolve().then(function() {
+		console.log('promise1')
+	}).then(function() {
+		console.log('promise2')
+	})
+
+	console.log(4)
+
+
+	new Vue({
+		el: '#main',
+		data: {
+			list: [
+				'AA',
+				'BB',
+				'CC'
+			]
+		},
+		mounted: function() {
+			this.list.push('DD')
+
+			console.log(this.$el.querySelectorAll('.item').length, '10086')  // 3
+
+			Vue.nextTick(() => {
+				console.log(this.$el.querySelectorAll('.item').length, '10086') // 4
+			})
+		}
+	})
+</script>

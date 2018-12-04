@@ -1,0 +1,19 @@
+{
+	"name": "mobxtest",
+	"version": "1.0.0",
+	"description": "",
+	"main": "webpack.config.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "webpack -w"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"babel-core": "^6.26.3",
+		"babel-loader": "^8.0.4",
+		"babel-preset-env": "^1.7.0",
+		"webpack": "^4.25.1",
+		"webpack-cli": "^3.1.2"
+	}
+}

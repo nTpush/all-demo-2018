@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+// includes(str,index): 如果在字符串中检测到指定文本，返回true，否则false
+let t = 'abcdefg'
+if(t.includes('bcd')) {
+	console.log(2)
+} 	
+
+// startsWith(str, index): 如果在字符串起始部分检测到指定文本，返回true，否则false
+if(t.startsWith('abc')) {
+	console.log(2)
+}
+
+// endsWith(str,index)：如果在字符串结束部分检测到指定文本，返回true，否则false
+if(t.endsWith('fg')) {
+	console.log(2)
+}
+
+// 函数的默认参数
+function a(num, callback) {
+	num = num || 6
+	callback = callback || function(data) {console.log('es5', data)}
+	callback(num * num)
+}
+
+a()
+
+// es6
+function a1(num = 6, callback=function(data) {console.log('es6', data)}) {
+	callback(num * num)
+}
+
+a(10, function(data) {
+	console.log(data * 10)
+})
+
+
+
+</script>

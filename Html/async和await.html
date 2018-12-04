@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+ async function myFunc() {
+     const promise = new Promise((resolve, reject) => {
+         setTimeout(()=>resolve('hello world'), 1000)
+     })
+     const res = await promise
+     console.log('👀 : -----------------------');
+     console.log('👀 : myFunc -> res', res);
+     console.log('👀 : -----------------------');
+     return res
+ }
+ myFunc().then(data => console.log(data))
+ async function getUsers() {
+     const response = await fetch('http://new-practice.local/api/article')
+     const data = await response.json();
+     return data
+ }
+getUsers().then(users => console.log(users))
+
+let promise = new Promise((resolve, reject) => {
+/**
+*   Promise的三种状态
+*   unresolved：等待任务完成
+*   resolved：任务完成并且没有任何问题
+*   rejected: 任务完成，但是出现问题
+*   http://jsonplaceholder.typicode.com/posts
+*/
+
+resolve()
+
+
+})
+console.log('👀 : ---------------------');
+console.log('👀 : promise', promise);
+console.log('👀 : ---------------------');
+
+function Car(option) {
+    this.title = option.title
+}
+
+
+// generator 生成器
+function* numbers() {
+    yield;
+}
+const gen = numbers();
+console.log('👀 : -------------');
+console.log('👀 : gen', gen.next());
+console.log('👀 : -------------');
+
+console.log(gen.next())
+
+// 数据结构 map
+// 键值对，与对象不同的是键和值可以是任务类型
+
+
+// 数据结构 set
+// 集合：可以存储任何数据类型，并且是唯一的（不重复的值）
+
+
+// let const var
+
+// 模板字符串
+
+// 箭头函数
+// 解决的问题： 1、缩减代码， 2、改变this指向
+
+// 增加对象字面量
+// 解决的问题：缩减代码
+
+// 函数参数默认值
+// 优化代码
+
+// spread operator 展开运算符，更快，更便捷的数组操作
+
+// 解构
+// 更快，更便捷
+
+// every:一假即假
+// some: 一真即真
+// reduce:
+
+</script>

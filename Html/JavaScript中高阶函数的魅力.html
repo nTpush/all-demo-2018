@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+https://juejin.im/post/5b8c8a6951882542ee717c86
+</body>
+</html>
+<script type="text/javascript">
+	/**
+	* 高阶函数是指至少满足下列条件之一的函数 ：
+	* 1、函数可以作为参数被传递
+	* 2、函数可以作为返回值输出
+	*/
+	Function.prototype.aopBefore = function(fn) {
+		console.log(this)
+		const _this = this
+		return function () {
+			fn.apply(this, arguments)
+			return _this.apply(this, arguments)
+		}
+	}
+
+	Function.prototype.aopAfter = function(fn) {
+		const _this = this
+		return function () {
+			let current = _this.apply(this, arguments)
+			fn.apply(this, arguments)
+			return current
+		}
+	}
+
+	let aopFun = function() {
+		console.log('aop')
+	}
+
+	aopFun = aopFun.aopBefore(()=>{
+		console.log('aop before')
+	}).aopAfter(()=>{
+		console.log('aop after')
+	})
+
+	aopFun()
+</script>

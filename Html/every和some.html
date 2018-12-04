@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" name="name" id="name">
+        <input type="text" name="age" id="age">
+
+        <button id="submit">提交</button>
+    </form>
+
+</body>
+</html>
+<script>
+function V(value) {
+    this.value = value
+}
+
+V.prototype.check = function() {
+     return this.value.length > 10 ? '不合法' : '合法'
+    // console.log(this.value, 'value')
+}
+
+var submit = document.getElementById('submit')
+submit.onclick = function(event) {
+    // 阻止默认提交
+    event.preventDefault();
+
+    var name = document.getElementById('name')
+    var age = document.getElementById('age')
+
+    console.log(name.value, '9')
+
+    var nameV = new V(name.value)
+
+    // console.log(nameV.check(), 'result')
+
+    var ageV = new V(age.value)
+
+
+    var file = [nameV, ageV]
+
+    var result = file.every(item => {
+        return item.value.length> 0
+    })
+
+    console.log(result, 'result')
+}
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+https://user-gold-cdn.xitu.io/2017/12/3/1601cd6b7a0d58b7
+
+<div id="myDiv" style="background-color: lightblue;width: 0;height: 20px;line-height: 20px;">0%</div>
+<button id="btn">run</button>
+</body>
+</html>
+
+<script type="text/javascript">
+	 // setInterval
+	// var myDiv = document.getElementById('myDiv')
+	// var i = 0;
+	// var time = setInterval(()=>{
+	// 	i += 5;
+	// 	myDiv.style.width = i/5 + '%'
+	// 	myDiv.innerHTML = i
+	// 	if(i>=100) {
+	// 		clearInterval(time)
+	// 	}
+	// }, 50)
+
+
+	// setTimeout
+	// var myDiv = document.getElementById('myDiv')
+	// var i = 0;
+	// var time = setTimeout(function fn() {
+	// 	if(i<100) {
+	// 		i += 5;
+	// 		myDiv.style.width = i/5 + '%'
+	// 		myDiv.innerHTML = i
+	// 		time = setTimeout(fn, 16)
+	// 	}else {
+	// 		clearTimeout(time)
+	// 	}
+	// }, 16)
+
+
+	// requestAnimationFrame
+	var myDiv = document.getElementById('myDiv')
+	var i = 0;
+	var timer = requestAnimationFrame(function fn() {
+		if(i<100) {
+			i += 5
+			myDiv.style.width = i/5 + '%'
+			myDiv.innerHTML = i
+			timer = requestAnimationFrame(fn)
+		}else {
+			cancelAnimationFrame(timer)
+		}
+	})
+</script>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: #222;
+    text-decoration: none;
+}
+i {
+    font-style:normal
+ }
+ body, html {
+    cursor:url("cursor.cur"), default !important;
+ }
+body {
+    /* background: url('background.jpg'); */
+    background-size: cover;
+    color: #222;
+    font-size: 14px;
+
+}
+ul, li {
+    list-style: none;
+}
+.line {
+    border: none;
+    border-top: 1px solid #f5f5f5;
+    margin: 10px 0;
+}
+
+.content {
+    width: 100%;
+    margin: 0 auto;
+
+}
+.content > div {
+    padding: 10px;
+    padding-top: 0;
+
+}
+.content .info {
+    font-weight: bold;
+    font-size: 0.7rem;
+    color: #757573;
+}
+.content .info span {
+    color: #538985;
+}
+.content .info .title {
+    text-align: right;
+}
+
+.content .user {
+    height: 20px;
+}
+.content .user ul {
+    height: 100%;
+}
+.content .user ul>li {
+    display: block;
+    height: 100%;
+    float: left;
+}
+
+.content .user ul>li:nth-child(1) {
+    background: #747472;
+}
+
+.content .user ul>li:last-child>p{
+    color: #747472;
+    margin-bottom: 0.36em;
+    vertical-align: middle;
+}
+.content .user ul>li:last-child>p span {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding-right: 20px;
+    padding-left: 5px;
+    background: #f5f5f5;
+}
+
+.content .user ul .aboutMe li {
+    margin-bottom: 10px;
+}
+.content .user ul .aboutMe li span {
+    font-weight: bold;
+    color: #747472;
+}
+.content .user ul .aboutMe li a{
+    font-weight: bold;
+    color: #7C7C7C;
+}
+.content .user ul .aboutMe li p {
+    line-height: 30px;
+    color: #757573;
+}
+.content .user ul .aboutMe li p.ps {
+    text-align: center;
+}
+.content .user ul li .ols {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.content .user ul li .ols ol {
+    width: 100%;
+
+}
+.content .user ul li .ols ol li {
+    margin-bottom: 10px;
+}
+.level span{
+    background: none !important;
+}
+@media(min-width:768px){
+ .content {
+    width: 700px;
+ }
+ .content .user ul li .ols ol {
+     width: 50%;
+ }
+}
+@media(min-width:992px){
+.content {
+    width: 900px;
+ }
+ .content .user ul li .ols {
+    flex-wrap: nowrap;
+ }
+ .content .user ul li .ols ol {
+     width:auto;
+ }
+
+}
+@media(min-width:1200px){
+.content {
+    width: 1024px;
+ }
+}
+.red {
+    color: red;
+}
+.orange {
+    color: #E0710A;
+}
+.yellow {
+    color: #FCC901;
+}
+.blue {
+    color: #3691FF;
+}
+.import {
+    color: #FE97C9 !important;
+}
+#menu{
+    width: 0; /*设置为0 隐藏自定义菜单*/
+    height: 80px;
+    overflow: hidden; /*隐藏溢出的元素*/
+    border: 1px solid #f5f5f5;
+    position: absolute; /*自定义菜单相对与body元素进行定位*/
+    background: #fff;
+}
+.menu{
+    width: 130px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #f5f5f5;
+    color: #2D2D5F;
+}
+.menu:hover {
+    background: #EDF0EA;
+}
+.flowers {
+    width: 100px;
+    height: 100vh;
+    position: fixed;
+}
+
+.runFlower {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+
+}
+
+
+
+</style>
+<body>
+        <div class="flowers"></div>
+        <div id="menu">
+            <div class="menu sendFlower">✿╮送 你 花 花</div>
+            <div class="menu">
+                <a onclick="window.open('tencent://message/?uin=1095950397');" href="javascript:;">联 系 我 ｡◕‿◕｡</a>
+            </div>
+        </div>
+    <div class="content">
+       <div>
+            <div class="info">
+                <p><b>๑•ิ.•ัﻬ</b>&count&emsp;  _____<span style="color: red" class="flowerCount">0</span></p>
+                <p>名称：<span>Jawen.Z</span></p>
+                <p>微信Id：<span>Z-520-shining</span></p>
+                <p>开放私人Qq：<span>1095950397，</span>验证请标记「web」字样~</p>
+                <br>
+                <p class="title"></p>
+            </div>
+
+            <div class="user">
+               <ul>
+                   <li></li>
+                   <li></li>
+                   <li>
+                       <p> ┠ <span>关于我♂ ╮</span></p>
+                       <p>╱╲17年毕业，来自宁波余姚。喜欢程序、英语、运动ண</p>
+                       <br>
+                       <p> ┠ <span>相关作品 ╮</span></p>
+                       <p>
+                           <ol class="aboutMe">
+                               <li><span>☞</span>
+                                <a href="http://118.24.194.224" target="_bank"> <span style="color: #C21D18">我</span> 的 博 客 </a>
+                                <p>本项目采用vue-cli构建，并在此基础上对他进行了优化，组件采用异步引入，将不经常变动的第三方依赖单独打包以后提高打包速度。部署时，静态资源均上传至OSS，以提高访问速度, 节省服务器资源。</p>
+                               </li>
+                               <li><span>☞</span>
+                                <a href="http://118.24.194.224:20002/" target="_bank"> <span style="color: #4FB177">我</span> 的 博</span> 客 - ssr </a>
+                                <p>本项目采用Vue的服务端渲染即SSR，有助于SEO优化，加速了首屏的渲染时间，<i class="import">重视用户体验。</i></p>
+                               </li>
+                               <li><span>☞</span>
+                                <a href="http://47.98.171.72:3002/#/" target="_bank"> <span style="color: #6AADCB">一</span> 直 在 路 上 </a>
+                                <p>本项目为初学Vue时的试探。</p>
+                                </li>
+                               <li><span>☞</span>
+                                <a href="http://47.98.171.72:8888" target="_bank"> <span style="color: #FEBE59">通</span> 用 后 台 权 限 管 理 系 统 </a>
+                                <p>本项目完成有角色管理、控制功能权限、用户管理、菜单管理等基本功能。</p>
+                               </li>
+                               <li>
+                                   <p class="ps">———— （以上项目所使用到的接口，均由本人提供！技术栈由：php(laravel)、node(express)、mysql、mongodb、mysql、nginx、linux等） ————</p>
+                               </li>
+                               <li><span>☞</span>
+                                  incool 学院 系 统 和 全 院 系 统
+                                <p>本项目是一个综合性的关于学员（代理商）学习、测试、评分的一个系统。</p>
+                               </li>
+                               <li><span>☞</span>
+                                <a href="http://wwwpc.funmart.com/" target="_bank"> <span style="color: #746398">跨</span> 境 电 商 —— funmart 商 城 </a>
+                                <p>本项目是一个关于商城的网站！</p>
+                               </li>
+                           </ol>
+                       </p>
+                       <br>
+                       <p> ┠ 技术分布 ╮</span></p>
+                       <div class="ols">
+                            <ol>
+                                <li><span class="orange">♥ </span>
+                                    ES5、CSS、LESS
+                                </li>
+                                <li><span class="yellow">♥ </span>
+                                    Mongodb、Node、Express、NPM
+                                </li>
+                                <li><span class="orange">♥ </span>
+                                    ES6、Typescript
+                                </li>
+                                <li><span class="yellow">♥ </span>
+                                    React16、React-redux
+                                </li>
+                                <li><span class="yellow">♥ </span>
+                                    Angular4
+                                </li>
+                            </ol>
+                            <ol>
+                                <li><span class="yellow">♥ </span>
+                                    Webpack
+                                </li>
+                                <li><span class="yellow">♥ </span>
+                                    PHP、Laravel、Mysql
+                                </li>
+                                <li><span class="orange">♥ </span>
+                                    Vue、Vuex、Vue-router、Axios
+                                </li>
+                                <li><span class="yellow">♥ </span>
+                                    Linux、Nginx
+                                </li>
+                                <li><span class="yellow">♥ </span>
+                                    Java、SSM
+                                </li>
+                            </ol>
+                            <ol>
+                                <li><span class="yellow">♥ </span>
+                                    Spring2
+                                </li>
+                                <li><span class="yellow">♥ </span>
+                                    Composer、Gradle
+                                </li>
+                                <li><span class="orange">♥ </span>
+                                    Git
+                                </li>
+                                <li><span class="red">♥ </span>
+                                    工欲善其事必先利其器
+                                </li>
+                                <li><span class="yellow">♥ </span>
+                                    e2e、unit
+                                </li>
+                            </ol>
+                            <ol>
+                                <li><span class="blue">♥ </span>
+                                    Rxjs、Socket
+                                </li>
+                                <li><span class="blue">♥ </span>
+                                    Rabbitmq、Kafka
+                                </li>
+                                <li><span class="yellow">♥ </span>
+                                    ESlint
+                                </li>
+                                <li><span class="red">♥ </span>
+                                    ......
+                                </li>
+                            </ol>
+                       </div>
+                       <br>
+                       <p class="level">︷✿：
+                        精通<span class="red">♥</span> &emsp;
+                        熟练<span class="orange">♥</span> &emsp;
+                        了解<span class="yellow">♥</span> &emsp;
+                        知道<span class="blue">♥</span>
+                       </p>
+                       <br>
+                       <p> ┠ <span>个人总结 ╮</span></p>
+                       <p>在代码的海洋中，学习潜水。(◡‿◡✿) 小女子有礼了......</p>
+                   </li>
+               </ul>
+            </div>
+       </div>
+    </div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/animejs/2.2.0/anime.js"></script>
+<script>
+    var colorsRandom = [];
+    var colors = ["C31711", "FEBB2E", "4EB278", "3AB3F0", "29295F", "A03237", "9E6657", "6AAFCC", "FE98CA", "756399", "CFB396"];
+function setTitleColor() {
+    var quotes = '任何诡异的问题背后总会犯有低级的错误!';
+    var quotesArr = quotes.split('');
+    var outputLi = '';
+    quotesArr.forEach(quote => {
+        var i = Math.ceil(Math.random()*colors.length-1);
+        colorsRandom.push(i);
+        outputLi += `<span style='color:#${colors[i]}'>${quote}</span>`
+    })
+    outputLi = `<span style='color: ${colorsRandom[0]}'>--- </span>${outputLi}<span style='color: ${colorsRandom[5]}'> ---</span>`
+    $('.title').append(outputLi)
+}
+window.onload = () => {
+    setTitleColor()
+}
+
+var x, y;
+window.oncontextmenu=function(e){
+//取消默认的浏览器自带右键 很重要！！
+e.preventDefault();
+//获取我们自定义的右键菜单
+var menu=document.querySelector("#menu");
+//根据事件对象中鼠标点击的位置，进行定位
+menu.style.left=e.clientX+'px';
+menu.style.top=e.clientY+'px';
+x = e.clientX;
+y = e.clientX;
+//改变自定义菜单的宽，让它显示出来
+menu.style.width='125px';
+　$('#menu').show();
+}
+//关闭右键菜单，很简单
+window.onclick=function(e){
+//用户触发click事件就可以关闭了，因为绑定在window上，按事件冒泡处理，不会影响菜单的功能
+　$('#menu').hide();
+}
+var root = 'http://118.24.194.224:20001'
+$('.sendFlower').click(function() {
+    var span = `<p><img src='flower.gif'></p>`
+    $('.flowers').append(span)
+
+    $.ajax({
+        data: {
+            appId: 10086
+        },
+        url:`${root}/api/blog/log`
+    }).then(res => {
+        console.log(res, 'res')
+        flower();
+    })
+})
+
+function flower() {
+    $.ajax({
+        url:`${root}/api/blog/log-flower`
+    }).then(res => {
+        var json = JSON.parse(res)
+        $('.flowerCount').text(json.body)
+    })
+}
+flower();
+
+$(window).click(function(e) {
+    $('.runFlower').remove();
+    var c = Math.ceil(Math.random()*colors.length-1);
+    console.log(c ,'cc')
+    var x = e.clientX;
+    var y = e.clientY;
+    // <span style="color:red; background:red">
+    var div = '';
+
+    for(var i=0; i<5; i ++) {
+        div += `<div class='runFlower run${i}'></div>`
+    }
+
+    $('body').append(div)
+    $('.runFlower').css({
+        left: x,
+        top: y,
+        background: `#${colors[c]}`
+    })
+
+    $('.runFlower').each(function(item) {
+        console.log($(this))
+    })
+
+    var myAnimation = anime({
+    targets: ['.runFlower'],
+    translateY: '-13rem',
+    opacity: 0,
+    rotate: 180,
+    borderRadius: 8,
+    duration: 2000,
+    loop: false,
+        complete: function() {
+            $('.runFlower').remove()
+        }
+    });
+
+    // $('.runFlower').
+
+})
+
+
+
+
+</script>

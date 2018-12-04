@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JavaScript 数据类型检测终极解决方案</title>
+</head>
+<body>
+	https://juejin.im/post/5ba221fb6fb9a05d3c7ff01c
+</body>
+</html>
+<script type="text/javascript">
+	var und = undefined;
+	var nul = null;
+	var boo = true;
+	var num = 1;
+	var str = 'str';
+	var obj = new Object();
+	var arr = [1, 2, 3]
+	var fun = function() {}
+	var date = new Date();
+	var reg = /a/g
+	var err = new Error()
+	var arg;
+	(function getArg() {
+		arg = arguments;
+	})()
+
+	console.log(typeof und);  // undefined
+	console.log(typeof nul);  // object
+	console.log(typeof boo);  // boolean
+	console.log(typeof num);  // number
+	console.log(typeof str);  // string
+	console.log(typeof obj);  // object
+	console.log(typeof arr);  // object
+	console.log(typeof fun);  // function
+	console.log(typeof date);  // object
+	console.log(typeof reg);  // object
+	console.log(typeof err);  // object
+	console.log(typeof arg);  // object
+
+	var toString=Object.prototype.toString;
+	console.log(toString.call(und));  // [object Undefined]
+	console.log(toString.call(nul));  // [object Null]
+	console.log(toString.call(boo));  // [object Boolean]
+	console.log(toString.call(num));  // [object Number]
+	console.log(toString.call(str));  // [object String]
+	console.log(toString.call(obj));  // [object Object]
+	console.log(toString.call(arr));  // [object Array]
+	console.log(toString.call(fun));  // [object Function]
+	console.log(toString.call(date));  // [object Date]
+	console.log(toString.call(reg));  // [object RegExp]
+	console.log(toString.call(err));  // [object Error]
+	console.log(toString.call(arg));  // [object Arguments]
+
+</script>

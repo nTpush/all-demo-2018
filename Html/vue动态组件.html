@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+            <button @click="change">切换页面</button>
+            <component :is="currentView"></component>
+    </div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+<script>
+    var home = {template:'<div>我是主页</div>'};
+    var post = {template:'<div>我是提交页</div>'};
+    var archive = {template:'<div>我是存档页</div>'};
+     var app = new Vue({
+        el:"#root",
+        data: {
+            name: 'shining'
+        },
+        components: {
+            home,
+            post,
+            archive,
+        },
+        data:{
+            index:0,
+            arr:['home','post','archive'],
+        },
+        computed:{
+            currentView(){
+                return this.arr[this.index];
+            }
+        },
+        methods:{
+            change(){
+            this.index = (++this.index)%3;
+            }
+        }
+    })
+</script>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>你试过不用if撸代码吗？</title>
+</head>
+<body>
+https://juejin.im/entry/5b97235d5188255c880aa456
+</body>
+</html>
+<script type="text/javascript">
+	/**
+	 *	示例1：统计数组中的奇数  
+	 */
+	 // 使用if
+	const arrayOfIntegers = [1, 4, 5, 9, 0, -1, 5]
+	var sum = 0
+	arrayOfIntegers.forEach(item => {
+		if(item % 2 !== 0) {
+			sum ++
+		}
+	})
+
+	// 不使用if
+	var sum = 0
+	arrayOfIntegers.forEach(item => {
+		const remainder = Math.abs(item % 2)
+		sum += remainder
+	})
+	// console.log(sum)  //不用if时，我们巧妙地利用了奇数与偶数的特性，它们除以2的余数分别是0和1。
+
+	/**
+	 *	示例2：判断工作日和周末
+	 */
+	 // console.log(new Date().getDay())
+	 // 使用if
+	 const weekendOrWeekday = (inputDate) => {
+	 	const day = inputDate.getDay()
+	 	if(day === 0 || day === 6) {
+	 		return 'weekend'
+	 	}
+	 	return 'weekday'
+	 	// or for 三元
+	 	// return (day === 0 || day === 6) ? 'weekend' : 'weekday'
+	 }
+	 // console.log(weekendOrWeekday(new Date()))
+
+	 // 不使用if
+	 const notIfweekendOrWeekday = (inputDate) => {
+	 	const day = inputDate.getDay()
+	 	return notIfweekendOrWeekday.labels[day] ||
+	 		notIfweekendOrWeekday.labels['default']
+	 }
+	 notIfweekendOrWeekday.labels = {
+	 	0: 'weekend',
+	 	6: 'weekend',
+	 	default: 'weekday'
+	 }
+	 // console.log(notIfweekendOrWeekday(new Date()))
+
+	 /**
+	 *	示例3：doubler函数
+	 */
+	 //写一个doubler函数，它会根据参数的类型，进行不同的操作
+	 // 使用switch
+	 const doubler = input => {
+	 	switch (typeof input) {
+	 		case 'number':
+	 			return input + input
+ 			case 'string':
+ 				return input.split('').map(letter => letter + letter).join('')
+ 			case 'object':
+ 				Object.keys(input).map(key => (input[key] = doubler(input[key])))
+ 				return input
+			case 'function':
+				input()
+				input()
+				return 1;
+	 	}
+	 }
+
+	 console.log(doubler(-10))
+
+	 console.log(doubler('hey'))
+
+	 console.log(doubler([5, 'hello']))
+
+	 console.log(doubler({a: 5, b: 'hello'}))
+
+	 console.log(doubler(()=>{
+	 	console.log('call-me')
+	 }))
+
+
+	 // 不使用if
+	 const notDoubler = input => {
+	 	return notDoubler.operationsByType[typeof input](input)
+	 }
+	 notDoubler.operationsByType = {
+	 	number: input => input + input,
+	 	string: input => input.split('').map(letter=>letter+letter).join(''),
+	 	function: input => {
+	 		input()
+	 		input()
+	 		return 1
+	 	},
+	 	object: input => {
+	 		Object.keys(input).map(key => (input[key] = doubler(input[key])))
+	 		return input
+	 	}
+	 }
+
+	 console.log(notDoubler(-10))
+
+	 console.log(notDoubler('hey'))
+
+	 console.log(notDoubler([5, 'hello']))
+
+	 console.log(notDoubler({a: 5, b: 'hello'}))
+
+	 console.log(notDoubler(()=>{
+	 	console.log('call-me')
+	 }))
+</script>

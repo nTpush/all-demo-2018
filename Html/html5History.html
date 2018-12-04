@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style lang="">
+    #container {
+        border: 1px solid red;
+        height: 300px;
+        padding: 10px;
+    }
+</style>
+<body>
+   <ul id="list">
+       <li><a href="#beijing">北京</a></li>
+       <li><a href="#shanghai">上海</a></li>
+       <li><a href="#shenzhen">深圳</a></li>
+   </ul>
+   <div id="container">
+       hello
+   </div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script>
+    $(function() {
+        _init()
+    })
+
+    var _history = []
+
+    function _init() {
+        var root = $('#list')
+        var defaultHash = root.find('li a').eq(1).attr('href')
+		console.log("​-----------------------------------------")
+		console.log("​function_init -> defaultHash", defaultHash)
+		console.log("​-----------------------------------------")
+        var currentHash = window.location.hash
+		console.log("​-----------------------------------------")
+		console.log("​function_init -> currentHash", currentHash)
+		console.log("​-----------------------------------------")
+        _addToHistory(defaultHash, true)
+        if(currentHash && currentHash != defaultHash) {
+            _showContent((currentHash.split('#')[1]))
+        }else {
+            _showContent((defaultHash.split('#')[1]))
+        }
+
+        $('#list').on('click', 'a', function(e) {
+            var action = ($(this).attr('href').split('#')[1])
+            _showContent(action)
+            e.preventDefault()
+        })
+
+        window.addEventListener('popstate', function(e) {
+            if(e.state)
+        })
+
+    }
+
+    function _showContent(action) {
+        var samePage = _history[0]['hash'] == '#' + action
+        if(samePage) {
+            return
+        }
+        _loadContent('#' + action, samePage).done(function(data) {
+            _renderContent(data['content'])
+            _addToHistory('#' + action, samePage)
+        }).fail(function() {
+            throw new Error('load content error !')
+        })
+    }
+
+    function _loadContent(url) {
+        return $ajax({
+            url: url,
+            dataType: 'json'
+        })
+    }
+
+    function _renderContent(text) {
+        $('#container').text(text)
+    }
+
+    function _addToHistory(hash, noState) {
+        var obj = {
+            hash: hash
+        }
+        if(noState) {
+            _history.shift(obj)
+            window.history.replaceState(obj, '', hash)
+        } else {
+            window.history.pushState(obj,'',hash)
+        }
+        _history.unshift(obj)
+    }
+</script>

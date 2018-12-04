@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<h1>localStorage设置一个过期时间</h1>
+</body>
+</html>
+<script>
+let _localStorage = {
+    // 设置过期时间
+    expired: 30*24*60*60*1000,
+    /**
+     * 设置过期时间
+     * @param expired 单位分
+     */
+    setExpired: function(expired) {
+        this.expired = expired * 60;
+        return this;
+    },
+    set: function(key, value) {
+        localStorage.removeItem(key);
+        let isObject = value instanceof Object,
+            _time = new Date().getTime(),
+            _expired = this.expired;
+        if(!isObject) {
+            var b = value;
+            value = {};
+            value._value = b;
+        }
+        value._time = _time;
+        value._expired = _time + _expired;
+        value._isObject = isObject;
+        localStorage.setItem(key, JSON.stringify(value))
+        return this;
+    },
+    isExpire: function(key) {
+        let isExpire = true,
+            value = localStorage.getItem(key),
+            now = new Date().getTime();
+        if(value) {
+            value = JSON.parse(value)
+            isExpire = now > value._age
+        } else {
+            // 没有值也是过期
+        }
+        return isExpire;
+    },
+    get: function(key) {
+        let isExpire = this.isExpire(key);
+        value = null;
+        if(!isExpire) {
+            value = localStorage.getItem(key);
+            value = JSON.parse(value);
+            if(!value._isObject) {
+                value = value._value
+            }
+        }
+        return value;
+    }
+}
+
+
+_localStorage.set(3).set('name', 'shining')
+
+</script>

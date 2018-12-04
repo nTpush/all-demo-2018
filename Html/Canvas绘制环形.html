@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas progress</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="200" height="200"></canvas>
+
+    <canvas id="circle" width="300" height="300"></canvas>
+    <script>
+
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      var x = canvas.width / 2;
+      var y = canvas.height / 2;
+      var radius = 75;
+      var counterClockwise = false;
+
+
+
+
+
+    let Circle = {
+        canvas: document.getElementById('circle'),
+        x: '',
+        y: '',
+        radius : 75,
+        context: '',
+        counterClockwise: false,
+        set: function(){
+            this.x = this.canvas.width /2
+            this.y = this.canvas.height /2
+            this.context = this.canvas.getContext('2d')
+        },
+        draw: function(startAngle, endAngle, width, strokeStyle) {
+            // 设置参数
+            this.set()
+            this.context.beginPath();
+            this.context.arc(this.x, this.y, this.radius, startAngle, endAngle, this.counterClockwise);
+            this.context.lineWidth = width;
+            this.context.strokeStyle = strokeStyle;
+            this.context.stroke();
+        }
+    }
+
+    var nums = [35,15,30,20]
+    var colors = ['blue', 'red', 'yellow', 'pink']
+    var strokes = [ 13, 8, 15, 9]
+    var start = 0
+    for(var i=0; i<nums.length; i++) {
+        var end = start + nums[i]/10*Math.PI;
+        Circle.draw(start, start + Math.PI*2*(nums[i]/100), strokes[i], colors[i])
+        start+=Math.PI*2*(nums[i]/100);
+    }
+
+
+
+
+
+
+
+
+      // 第一段
+      var startAngle = 0 * Math.PI;
+      var endAngle = 0.5 * Math.PI;
+      context.beginPath();
+      context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+      context.lineWidth = 10;
+      context.strokeStyle = 'black';
+      context.stroke();
+
+      // 第二段
+      context.beginPath();
+      startAngle = 0.5 * Math.PI;
+      endAngle = 1 * Math.PI;
+      context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+      context.lineWidth = 14;
+      context.strokeStyle = 'red';
+      context.stroke();
+
+      // 第三段
+      context.beginPath();
+      startAngle = 1 * Math.PI;
+      endAngle = 1.5 * Math.PI;
+      context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+      context.lineWidth = 10;
+      context.strokeStyle = 'green';
+      context.stroke();
+
+      // 第四段
+      context.beginPath();
+      startAngle = 1.5 * Math.PI;
+      endAngle = 2 * Math.PI;
+      context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+      context.lineWidth = 10;
+      context.strokeStyle = 'blue';
+      context.stroke();
+    </script>
+</body>
+</html>

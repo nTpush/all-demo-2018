@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    body {
+
+    }
+    a:hover {
+        text-decoration: none;
+    }
+    .content {
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 150px;
+
+    }
+    .row .col-md-3 div {
+        width: 100%;
+        height: 80px;
+        background: red;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 80px;
+        color: #fff;
+    }
+    .row .col-md-3:nth-child(1) div {
+        background: #ECA696;
+    }
+    .row .col-md-3:nth-child(2) div {
+        background: #B9E3E2;
+    }
+    .row .col-md-3:nth-child(3) div {
+        background: #ECA696;
+    }
+    .row .col-md-3:nth-child(4) div {
+        background: #B9E3E2;
+    }
+    /* 小屏幕（平板，大于等于 768px） */
+    @media(min-width:768px) {
+        .content {
+            width: 700px;
+        }
+    }
+
+    /* 中等屏幕（桌面显示器，大于等于 992px） */
+    @media(min-width:992px) {
+        .content {
+            width: 900px;
+        }
+    }
+
+    /* 大屏幕（大桌面显示器，大于等于 1200px） */
+    @media(min-width:1200px) {
+        .content {
+            width: 1024px;
+        }
+    }
+</style>
+<body>
+<div class="content">
+    <div class="row">
+        <div class="col-sm-6 col-md-3">
+            <a href="http://www.ok-bug.com/swagger">
+                <div>
+                    SSR
+                </div>
+            </a>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <a href="http://www.ok-bug.com/blog">
+            <div>VUE</div>
+            <a>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div>Me</div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div></div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</html>
